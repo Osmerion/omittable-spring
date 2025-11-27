@@ -34,11 +34,10 @@ testing {
             dependencies {
                 implementation(project())
 
-                implementation(platform(libs.spring.boot.dependencies))
+                implementation(platform(buildDeps.spring.boot.dependencies))
                 implementation(buildDeps.mockito.core)
-                implementation(libs.spring.boot.starter.test)
-                implementation(libs.spring.boot.starter.web)
-                implementation(libs.springdoc.openapi.starter.webmvc.ui)
+                implementation(buildDeps.spring.boot.starter.test)
+                implementation(buildDeps.spring.boot.starter.web)
             }
         }
     }
@@ -49,14 +48,13 @@ publishing {
         from(components["java"])
 
         pom {
-            description = "Spring Cores support for Omittable types."
+            description = "Spring Core support for Omittable types."
         }
     }
 }
 
 dependencies {
-    api(project(":omittable", "archives"))
-    api(project(":omittable", "jvmRuntimeElements"))
     api(libs.jspecify)
+    api(libs.omittable)
     api(libs.spring.core)
 }
