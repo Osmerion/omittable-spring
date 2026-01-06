@@ -17,6 +17,14 @@ Both artifacts provide a handler method argument resolver for their respective
 frameworks that allows using omittable types as request parameters.
 
 
+### Compatibility
+
+| Spring Framework | Omittable - Spring Framework Integration |
+|------------------|------------------------------------------|
+| **7**.x          | **2**.x                                  |
+| **6**.x          | **0**.x, **1**.x                         |
+
+
 ## Building from source
 
 ### Setup
