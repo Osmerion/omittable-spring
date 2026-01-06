@@ -1,3 +1,17 @@
 {
-    extends: ["github>Osmerion/.github//.github/renovate.json5"]
+    extends: ["github>Osmerion/.github//.github/renovate.json5"],
+    packageRules: [
+        {
+            /*
+             * Spring Boot is not a lib dependency as it is only used for testing purposes. However, due to its nature,
+             * it must stay in sync with Spring Core. Thus, we can disable major updates for release branches.
+             */
+            description: "Disable Spring Boot major updates",
+            matchFileNames: ["gradle/build.versions.toml"],
+            matchBaseBranches: ["/^release/.*/"],
+            matchPackageNames: ["org.springframework.boot:**"],
+            matchUpdateTypes: ["major"],
+            enabled: true
+        }
+    ]
 }
