@@ -11,7 +11,7 @@
             matchBaseBranches: ["/^release/.*/"],
             matchPackageNames: ["org.springframework.boot:**"],
             matchUpdateTypes: ["major"],
-            enabled: true
+            enabled: false
         }
     ]
 }
