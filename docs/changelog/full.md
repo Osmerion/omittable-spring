@@ -1,6 +1,6 @@
 ### 1.0.0
 
-_Released 2026 Jan 01_
+_Released 2026 Jan 06_
 
 #### Overview
 
