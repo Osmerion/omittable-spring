@@ -94,9 +94,8 @@ jobs:
       - name: Upload Artifact Bundle
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
-          name: ${{ matrix.os }}-${{ env.WORKSPACE_ARTIFACT }}
+          name: "artifact-bundle"
           path: "./build/libs/maven-artifact-bundle.tgz"
-          retention-days: 1
 
   central-upload:
     name: Upload to Central Portal
