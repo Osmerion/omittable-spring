@@ -5,7 +5,7 @@ spring-framework = "6.2.14"
 [libraries]
 # com.osmerion.omittable - Omittable
 # https://github.com/Osmerion/Omittable
-omittable = { module = "com.osmerion.omittable:omittable", version = "0.5.0" }
+omittable = { module = "com.osmerion.omittable:omittable", version = "1.0.0" }
 
 # org.jspecify - JSpecify
 # https://github.com/jspecify/jspecify
