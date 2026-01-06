@@ -61,17 +61,12 @@ public final class OmittableRequestParamMethodArgumentResolver extends AbstractN
      */
     @Override
     protected Object resolveName(String name, MethodParameter parameter, NativeWebRequest request) {
-        String[] paramValues;
-
-        if (request.getParameterMap().containsKey(name)) {
-            paramValues = request.getParameterValues(name);
-        } else if (request.getParameterMap().containsKey(name + "[]")) {
+        String[] paramValues = request.getParameterValues(name);
+        if (paramValues == null) {
             paramValues = request.getParameterValues(name + "[]");
-        } else {
-            return Omittable.absent();
+            if (paramValues == null) return Omittable.absent();
         }
 
-        assert paramValues != null;
         return Omittable.of(paramValues.length == 1 ? paramValues[0] : paramValues);
     }
 

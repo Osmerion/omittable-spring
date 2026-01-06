@@ -25,7 +25,6 @@ java {
     withJavadocJar()
 }
 
-
 testing {
     suites {
         named<JvmTestSuite>("test") {

@@ -20,6 +20,7 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.ReactiveAdapterRegistry;
+import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ValueConstants;
@@ -89,17 +90,14 @@ public final class OmittableRequestParamMethodArgumentResolver extends AbstractN
      */
     @Override
     protected Object resolveNamedValue(String name, MethodParameter param, ServerWebExchange exchange) {
-        List<String> paramValues;
+        MultiValueMap<String, String> queryParams = exchange.getRequest().getQueryParams();
 
-        if (exchange.getRequest().getQueryParams().containsKey(name)) {
-            paramValues = exchange.getRequest().getQueryParams().get(name);
-        } else if (exchange.getRequest().getQueryParams().containsKey(name + "[]")) {
-            paramValues = exchange.getRequest().getQueryParams().get(name + "[]");
-        } else {
-            return Omittable.absent();
+        List<String> paramValues = queryParams.get(name);
+        if (paramValues == null) {
+            paramValues = queryParams.get(name + "[]");
+            if (paramValues == null) return Omittable.absent();
         }
 
-        assert paramValues != null;
         return Omittable.of(paramValues.size() == 1 ? paramValues.get(0) : paramValues);
     }
 
