@@ -24,6 +24,23 @@ java {
     withJavadocJar()
 }
 
+testing {
+    suites {
+        named<JvmTestSuite>("test") {
+            useJUnitJupiter()
+
+            dependencies {
+                implementation(project())
+
+                implementation(platform(buildDeps.spring.boot.dependencies))
+                implementation(buildDeps.mockito.core)
+                implementation(buildDeps.spring.boot.starter.test)
+                implementation(buildDeps.spring.boot.starter.web)
+            }
+        }
+    }
+}
+
 publishing {
     publications.register<MavenPublication>("mavenJava") {
         from(components["java"])
