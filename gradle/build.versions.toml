@@ -1,6 +1,6 @@
 [versions]
 junit = "6.0.2"
-spring-boot = "3.5.9"
+spring-boot = "3.5.10"
 
 
 [libraries]
