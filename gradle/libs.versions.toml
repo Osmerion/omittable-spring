@@ -1,5 +1,5 @@
 [versions]
-spring-framework = "7.0.4"
+spring-framework = "7.0.5"
 
 
 [libraries]
