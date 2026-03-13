@@ -1,5 +1,5 @@
 [versions]
-spring-framework = "6.2.16"
+spring-framework = "6.2.17"
 
 
 [libraries]
